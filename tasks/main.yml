@@ -4,7 +4,7 @@
   tags: pgbouncer
 
 - name: Install pgbouncer
-  apt: pkg=pgbouncer state=installed update_cache=yes
+  apt: pkg=pgbouncer state=installed
   notify:
     - restart pgbouncer
   tags: pgbouncer

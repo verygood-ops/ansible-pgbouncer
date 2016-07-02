@@ -1,5 +1,5 @@
 pgbouncer:
-  repo: 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main'
+  repo: 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main'
 
   user: postgres
   group: postgres
@@ -10,7 +10,8 @@ pgbouncer:
 
     user: postgres
 
-    auth_type: trust
+    # dont' want to have trusty by default
+    auth_type: md5 
     auth_file: /etc/pgbouncer/userlist.txt
 
     log_rotate_retain_count: 2
@@ -27,7 +28,8 @@ pgbouncer:
     log_pooler_errors: 1
 
 pgbouncer_users:
-  - postgres
+  - name: postgres
+    password: testing
 
 pgbouncer_admin_users:
   - postgres

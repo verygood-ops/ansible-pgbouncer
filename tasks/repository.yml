@@ -6,7 +6,9 @@
     - apt
 
 - name: Add repository key
-  apt_key: data="{{ lookup('file', 'ACCC4CF8.asc') }}"  state=present
+  apt_key: 
+    url=https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state=present
   tags:
     - apt
 
