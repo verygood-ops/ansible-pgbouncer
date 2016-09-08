@@ -39,3 +39,5 @@
 - include: newrelic.yml
   when: newrelic_license_key is defined
   tags: pgbouncer
+
+- include: create_readonly_user.yml

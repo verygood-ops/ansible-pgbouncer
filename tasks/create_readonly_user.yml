@@ -1,0 +1,10 @@
+---
+
+- name: copy access script
+  copy: 
+    src: files/create-readonly-user.sh
+    dest: /tmp/create-readonly-user.sh
+
+- name: create readonly user in database
+  shell: PGPASSWORD={{item.admin_password}} /tmp/create-readonly-user.sh -h {{pgbouncer_database_host}} -p {{pgbouncer_database_port}} -d {{item.name}} -u {{pgbouncer_users.name}} -P {{pgbouncer_users.password}} -s {{item.schemas}} -t {{item.tables}}
+  with_items: pgbouncer_database
