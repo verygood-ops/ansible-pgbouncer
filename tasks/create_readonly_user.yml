@@ -4,7 +4,12 @@
   copy: 
     src: files/create-readonly-user.sh
     dest: /tmp/create-readonly-user.sh
+    mode: 0775
 
 - name: create readonly user in database
-  shell: PGPASSWORD={{item.admin_password}} /tmp/create-readonly-user.sh -h {{pgbouncer_database_host}} -p {{pgbouncer_database_port}} -d {{item.name}} -u {{pgbouncer_users.name}} -P {{pgbouncer_users.password}} -s {{item.schemas}} -t {{item.tables}}
-  with_items: pgbouncer_database
+  shell: PGPASSWORD={{item[0].admin_password}} /tmp/create-readonly-user.sh -h {{pgbouncer_database_host}} -p {{pgbouncer_database_port}} -d {{item[0].name}}  -U {{item[0].admin_username}} -u {{item[1].name}} -P {{item[1].password}} -s '{{item[0].schemas}}' -t '{{item[0].tables}}'
+  args:
+    executable: /bin/bash
+  with_nested:
+    - "{{pgbouncer_databases}}"
+    - "{{pgbouncer_users}}"

@@ -39,7 +39,7 @@ while getopts ":d:p:U:u:P:h:s:t:" o; do
 done
 
 # psql_command admin_user "command"
-function psql_command() {
+function psql_command () {
     psql -h$HOSTNAME \
       -p$PORT $DB_NAME \
       -U$ADMIN_USER \

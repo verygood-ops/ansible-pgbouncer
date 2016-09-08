@@ -44,11 +44,9 @@ pgbouncer_database_port: 5432
 pgbouncer_aliases: []
 
 # databases where pgbouncer will have access to
-pgbouncer_database:
+pgbouncer_databases:
   - name: testing
     schemas: 'schema1 schema2'
     tables: 'table1 table2'
     admin_username: admin
     admin_password: password
-    readonly_username: pgbouncer
-    readonly_encrypted_password: '^123'
