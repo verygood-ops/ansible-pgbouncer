@@ -1,7 +1,7 @@
 ---
 
 # needed to get some stats
-- apt: pkg=postgresql-client-9.3 state=present
+- apt: pkg={{ postgres_client_package_name }} state=present
 
 - name: stats
   command: psql -p {{ pgbouncer.config.listen_port }} pgbouncer -U {{ pgbouncer_stats_users | first }} -c "show {{ item }};"
