@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 # script to create periscope user with read-only permissions
 
-set -x -e
+set -x
 
 usage() { echo "Usage: PGPASSWORD=foo $0 -d db-name -p port -U superuser -u readonly_user -P readonly_user_password -s 'schema schema2' -t 'table table2'" 1>&2; exit 1; }
 
