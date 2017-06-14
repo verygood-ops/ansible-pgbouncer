@@ -34,10 +34,12 @@
 - template: src=pgbouncer/logrotate.j2 dest=/etc/logrotate.d/postgresql-common
 
 - include: monitoring.yml
+  when: pgbouncer_monit is defined and pgbouncer_monit|bool == true
   tags: pgbouncer
 
 - include: newrelic.yml
-  when: newrelic_license_key is defined
+  when: newrelic_license_key is defined and pgbouncer_newrelic_install|bool == true
   tags: pgbouncer
 
 - include: create_readonly_user.yml
+  when: pgbouncer_create_readonly_user is defined and pgbouncer_create_readonly_user|bool == true
