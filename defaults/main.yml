@@ -12,7 +12,7 @@ pgbouncer:
     user: postgres
 
     # dont' want to have trusty by default
-    auth_type: md5 
+    auth_type: md5
     auth_file: /etc/pgbouncer/userlist.txt
 
     log_rotate_retain_count: 2
@@ -50,3 +50,7 @@ pgbouncer_databases:
     tables: 'table1 table2'
     admin_username: admin
     admin_password: password
+
+pgbouncer_monit: false
+pgbouncer_create_readonly_user: false
+pgbouncer_newrelic_install: false
