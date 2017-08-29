@@ -3,6 +3,9 @@
 - include: repository.yml
   tags: pgbouncer
 
+# needed to get some stats
+- apt: pkg={{ postgres_client_package_name }} state=present
+
 - name: Install pgbouncer
   apt: pkg=pgbouncer state=installed
   notify:
@@ -43,3 +46,10 @@
 
 - include: create_readonly_user.yml
   when: pgbouncer_create_readonly_user is defined and pgbouncer_create_readonly_user|bool == true
+
+- name: change permissions of log folder
+  file:
+    path: /var/log/postgresql
+    owner: postgres
+    group: postgres
+    mode: 0744
