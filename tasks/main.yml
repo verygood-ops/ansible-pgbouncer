@@ -4,7 +4,7 @@
   tags: pgbouncer
 
 # needed to get some stats
-- apt: pkg={{ postgres_client_package_name }} state=present
+- apt: pkg={{ pgbouncer.postgres_client_package_name }} state=present
 
 - name: Install pgbouncer
   apt: pkg=pgbouncer state=installed
