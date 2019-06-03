@@ -18,7 +18,7 @@ pgbouncer:
     log_rotate_retain_count: 2
     log_rotate_retain_period: daily
 
-    pool_mode: session
+    pool_mode: transaction
 
     max_client_conn: 400
     default_pool_size: 100

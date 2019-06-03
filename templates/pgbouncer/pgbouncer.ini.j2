@@ -9,7 +9,7 @@
 {% for alias in pgbouncer_aliases %}
 {{ alias.name }} = host={{ alias.host }} port={{ alias.port }} dbname={{ alias.db_name }}
 {% endfor %}
-* = host={{ pgbouncer_database_host }} port={{ pgbouncer_database_port }}
+;; * = host={{ pgbouncer_database_host }} port={{ pgbouncer_database_port }}
 
 ;; Configuation section
 [pgbouncer]
